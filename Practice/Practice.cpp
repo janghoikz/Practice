@@ -16,7 +16,7 @@ void Swap(int& value1, int& value2)
 }
 // Sequential sort
 // 시간복잡도 : O(n^2)
-// 공간복잡도 : O(n)
+// 공간복잡도 : O(1)
 void SequentialSort(int input[], int size)
 {
     for (int i = 0; i < size-1; i++)
@@ -33,7 +33,7 @@ void SequentialSort(int input[], int size)
 
 // Selection Sort
 // 시간복잡도  : O(n^2)
-// 공간복잡도  : O(n)
+// 공간복잡도  : O(1)
 void SelectionSort(int input[], int size)
 {
     for (int i = 0; i < size; i++)
@@ -50,6 +50,24 @@ void SelectionSort(int input[], int size)
         {
             Swap(input[i], input[minIndex]);
         }
+    }
+}
+// Bubble Sort
+// 시간복잡도  : O(n^2)
+// 공간복잡도  : O(1)
+void BubbleSort(int input[], int size)
+{
+    for (int i = size - 1; i > 0; i--)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            if (input[j] > input[j + 1])
+            {
+                int temp = input[j];
+                input[j] = input[j + 1];
+                input[j + 1] = temp;
+            }
+        }    
     }
 }
 
