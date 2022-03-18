@@ -71,6 +71,24 @@ void BubbleSort(int input[], int size)
     }
 }
 
+// Insertion Sort
+// 시간 복잡도 : O(n^2)
+// 공간 복잡도 : O(1)
+void InsertionSort(int input[], int size)
+{
+    for (int i = 1; i < size; i++)
+    {
+        int j = i;
+        int target = input[i];
+
+        while (j-- >= 0 && target < input[j])
+        {
+            input[j + 1] = input[j];
+            input[j] = target;
+        }
+    }
+}
+
 int main()
 {
     const int SIZE{ 5 };
