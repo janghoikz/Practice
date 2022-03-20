@@ -139,6 +139,38 @@ void MergeSort(int input[], int start, int end, int temp[])
     Merge(input, start, half, end, temp);
 }
 
+void quickSort(int* arr, int start, int end) 
+{
+    if (start >= end) return; 
+    int pivot = start;
+
+    int left = start + 1;
+    int right = end;
+
+    while (left <= right) 
+    {
+        while (left <= end && arr[left] <= arr[pivot])
+        {
+            left++;
+        }
+        while (right > start && arr[right] >= arr[pivot])
+        {
+            right--;
+        }
+        if (left > right)
+        {
+            std::swap(arr[pivot], arr[right]);
+        }
+        else
+        {
+            std::swap(arr[left], arr[right]);
+        }
+    }
+    quickSort(arr, start, right - 1); 
+    quickSort(arr, right + 1, end);
+}
+
+
 
 int main()
 {
