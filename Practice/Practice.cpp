@@ -89,6 +89,8 @@ void InsertionSort(int input[], int size)
     }
 }
 //Merge Sort
+// 시간 복잡도 : O(n log n)
+// 공간 복잡도 : O(n)
 
 void Merge(int input[], int start, int half, int end, int temp[])
 {
@@ -139,35 +141,40 @@ void MergeSort(int input[], int start, int end, int temp[])
     Merge(input, start, half, end, temp);
 }
 
-void quickSort(int* arr, int start, int end) 
+//quick Sort
+// 시간 복잡도 : O(n log n)
+// 공간 복잡도 : O(n)
+void quickSort(int input[], int left, int right)
 {
-    if (start >= end) return; 
-    int pivot = start;
-
-    int left = start + 1;
-    int right = end;
-
-    while (left <= right) 
+    int i = left;
+    int j = right;
+    int pivot = input[(left+right)/2];
+    do
     {
-        while (left <= end && arr[left] <= arr[pivot])
+        while (input[i] < pivot)
         {
-            left++;
+            i++;
         }
-        while (right > start && arr[right] >= arr[pivot])
+        while (input[j] > pivot)
         {
             right--;
         }
-        if (left > right)
+        if (i <= j)
         {
-            std::swap(arr[pivot], arr[right]);
+            std::swap(input[i], input[j]);
+            i++;
+            j--;
         }
-        else
-        {
-            std::swap(arr[left], arr[right]);
-        }
+    } while (i <= j);
+
+    if (left < j)
+    {
+        quickSort(input, left, j);
     }
-    quickSort(arr, start, right - 1); 
-    quickSort(arr, right + 1, end);
+    if (right > i)
+    {
+        quickSort(input, i, right);
+    }
 }
 
 
